@@ -15,6 +15,7 @@ function agregarAmigo() {
     }else if(amigos.includes(amigo)){
         // Si el amigo ya está en la lista, muestra un mensaje de alerta
         alert("El amigo con ese nombre, ya está en la lista");
+        limpiarCampoEntrada();
         return;
     }
     amigos.push(amigo);
@@ -22,6 +23,10 @@ function agregarAmigo() {
     ActualizarListaDeAmigos();
     //console.log(amigos);
 
+}
+function limpiarListaAmigos(){
+    let listaAmigos = document.getElementById("listaAmigos");
+    listaAmigos.innerHTML = "";
 }
 
 // Función para limpiar el campo de texto
@@ -44,6 +49,12 @@ function ActualizarListaDeAmigos() {
     }
     
 }
+
+function limpiarMensajeAmigoSecreto(){
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = "";
+}
+
 // Función para sortear un amigo
 function sortearAmigo() {
     // Verifica si la lista de amigos está vacía
@@ -67,18 +78,15 @@ function sortearAmigo() {
         let li = document.createElement("li");
         li.textContent = `El amigo secreto es: ${amigoSecreto}`;
         resultado.appendChild(li);
-
-        //console.log(`El amigo secreto es: ${amigoSecreto}`);
-       
-       
+        //console.log(`El amigo secreto es: ${amigoSecreto}`);   
     }
+    
+        
 }
-
-function limpiarListaAmigos() {
-    let listaAmigos = document.getElementById("listaAmigos");
-    // Limpiar el contenido de la lista de amigos
-    listaAmigos.innerHTML = "";
-
+ 
+function reiniciarSorteo(){
+    amigos = [];
+    ActualizarListaDeAmigos();
+    limpiarMensajeAmigoSecreto();
 }
-
 
